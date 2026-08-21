@@ -205,6 +205,17 @@
   }
   .av-main { flex: 1; }
 
+  /* Footer: mismos valores que el style inline de app.jsx en el prototipo. */
+  .av-foot {
+    padding: 20px 32px;
+    border-top: 1px solid var(--line);
+    color: var(--ink-faint);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-align: center;
+  }
+
   /* ===== pixel + neon text ===== */
   .pixel {
     font-family: var(--pixel);
