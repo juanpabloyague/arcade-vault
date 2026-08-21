@@ -334,6 +334,14 @@
     border-bottom: 1px dashed var(--line-2);
   }
   .av-mobile-panel a.active { color: var(--cyan); }
+  /* Interior del cajón: mismos valores que los style inline de nav.jsx. */
+  .av-mobile-panel .drawer-title { font-size: 11px; margin-bottom: 16px; }
+  .av-mobile-panel .drawer-spacer { flex: 1; }
+  .av-mobile-panel .drawer-credits {
+    font-size: 9px;
+    color: var(--ink-faint);
+    letter-spacing: 0.16em;
+  }
   .av-mobile-backdrop {
     position: fixed;
     inset: 0;
