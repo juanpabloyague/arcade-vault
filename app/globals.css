@@ -481,6 +481,19 @@
     padding: 0 32px;
   }
 
+  /* Estado vacío de la biblioteca: mismos valores que el style inline de biblioteca.jsx. */
+  .av-grid .av-empty {
+    grid-column: 1 / -1;
+    padding: 80px;
+    text-align: center;
+    color: var(--ink-faint);
+  }
+  .av-empty .empty-title {
+    font-size: 14px;
+    color: var(--magenta);
+    margin-bottom: 12px;
+  }
+
   .card {
     position: relative;
     background: linear-gradient(180deg, var(--bg-2), var(--bg-3));
