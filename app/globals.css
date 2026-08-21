@@ -721,6 +721,8 @@
     overflow: hidden;
   }
   .detail-info { display: flex; flex-direction: column; gap: 16px; }
+  /* Separación bajo la portada: mismo valor que el style inline de detalle.jsx. */
+  .av-detail .detail-info { margin-top: 20px; }
   .detail-info h2 {
     margin: 0;
     font-family: var(--pixel);
@@ -760,6 +762,9 @@
     margin-top: 6px;
     text-shadow: 0 0 6px rgba(0, 245, 255, 0.5);
   }
+  /* Variantes de valor del stat-strip: mismos valores que los style inline de detalle.jsx. */
+  .stat-strip .v.magenta { color: var(--magenta); text-shadow: 0 0 6px rgba(255, 0, 110, 0.5); }
+  .stat-strip .v.yellow { color: var(--yellow); text-shadow: 0 0 6px rgba(245, 255, 0, 0.5); }
   .detail-actions { display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
 
   .leaderboard {
