@@ -834,6 +834,18 @@
   .hud-stat.lives .v { color: var(--magenta); text-shadow: 0 0 6px rgba(255, 0, 110, 0.5); }
   .hud-stat.level .v { color: var(--yellow); text-shadow: 0 0 6px rgba(245, 255, 0, 0.5); }
   .hud-actions { display: flex; gap: 10px; }
+  /* Bloque de estadísticas del HUD y overlay de pausa:
+     mismos valores que los style inline de reproductor.jsx. */
+  .player-hud .hud-stats { display: flex; gap: 24px; flex-wrap: wrap; }
+  .hud-stat.player .v { color: var(--ink); }
+  .crt-content.paused { background: rgba(0, 0, 0, 0.6); z-index: 5; }
+  .crt-content .paused-title { font-size: 22px; }
+  .crt-content .paused-hint {
+    font-size: 11px;
+    color: var(--ink-dim);
+    margin-top: 10px;
+    letter-spacing: 0.16em;
+  }
 
   .crt {
     position: relative;
