@@ -1,69 +1,103 @@
-import Image from "next/image";
+// Placeholder home screen: a live check of the ported theme (fonts, palette,
+// CRT background, component classes). Replaced when `biblioteca.jsx` is ported.
+const GAMES = [
+  { id: "bricks", cover: "cover-bricks", cat: "Arcade", title: "Rompe Muros", desc: "Rompe cada ladrillo antes de quedarte sin vidas.", score: "12 480" },
+  { id: "tetro", cover: "cover-tetro", cat: "Puzzle", title: "Bloques Caídos", desc: "Encaja las piezas y limpia líneas completas.", score: "34 900" },
+  { id: "snake", cover: "cover-snake", cat: "Clásico", title: "Serpiente", desc: "Crece con cada bocado y esquiva tu propia cola.", score: "8 120" },
+  { id: "invaders", cover: "cover-invaders", cat: "Disparos", title: "Invasores", desc: "Defiende la base de oleadas que bajan sin parar.", score: "21 350" },
+];
+
+const SCORES = [
+  { rank: 1, player: "PIXELINA", score: "34 900" },
+  { rank: 2, player: "R3TROBOY", score: "31 210" },
+  { rank: 3, player: "NEONKAT", score: "28 004" },
+  { rank: 4, player: "MODO8BIT", score: "19 776" },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="av-main">
+      <section className="av-hero">
+        <h1>Arcade Vault</h1>
+        <p className="sub">
+          Inserta una moneda para empezar<span className="blink">_</span>
+        </p>
+      </section>
+
+      <div className="av-filters">
+        <div className="av-search">
+          <span className="ico" aria-hidden="true">
+            &gt;
+          </span>
+          <input type="search" placeholder="Buscar un juego" aria-label="Buscar un juego" />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div className="av-chips">
+          <button type="button" className="chip active">
+            Todos
+          </button>
+          <button type="button" className="chip">
+            Arcade
+          </button>
+          <button type="button" className="chip">
+            Puzzle
+          </button>
+          <button type="button" className="chip">
+            Clásico
+          </button>
         </div>
-      </main>
-    </div>
+      </div>
+
+      <section className="av-grid">
+        {GAMES.map((game) => (
+          <article key={game.id} className="card">
+            <div className="cover">
+              <div className={`cover-bg ${game.cover}`} />
+              <span className="label">{game.cat}</span>
+            </div>
+            <div className="meta">
+              <h2 className="title">{game.title}</h2>
+              <p className="desc">{game.desc}</p>
+            </div>
+            <div className="row">
+              <span className="score-badge">
+                Récord
+                <b>{game.score}</b>
+              </span>
+              <button type="button" className="btn">
+                Jugar
+              </button>
+            </div>
+          </article>
+        ))}
+      </section>
+
+      <section className="av-hall">
+        <header className="hall-head">
+          <h1>Salón de la Fama</h1>
+          <p>Las mejores marcas de la semana</p>
+        </header>
+        <div className="leaderboard">
+          <h3>Bloques Caídos</h3>
+          {SCORES.map((row) => (
+            <div key={row.rank} className={`lb-row top${row.rank}`}>
+              <span className="rk">{row.rank}</span>
+              <span className="pl">{row.player}</span>
+              <span className="sc">{row.score}</span>
+            </div>
+          ))}
+        </div>
+        <div className="detail-actions">
+          <button type="button" className="btn lg pulse">
+            Jugar ahora
+          </button>
+          <button type="button" className="btn lg magenta">
+            Ver ranking
+          </button>
+          <button type="button" className="btn lg ghost">
+            Cerrar sesión
+          </button>
+        </div>
+      </section>
+    </main>
   );
 }

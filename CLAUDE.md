@@ -4,6 +4,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 @AGENTS.md
 
+# Skills
+
+Always use /frontend-design to do user interfaces.
+
 ## Commands
 
 ```bash
@@ -46,16 +50,16 @@ import/export.
 
 Map from prototype to App Router routes:
 
-| Template | Component | Intended route |
-|---|---|---|
-| `biblioteca.jsx` | `Library`, `GameCard` | game library / catalog with category filter |
-| `detalle.jsx` | `GameDetail` | per-game detail page |
-| `reproductor.jsx` | `GamePlayer` | play screen (HUD: score, lives, level) |
-| `salon.jsx` | `HallOfFame` | leaderboard, tabbed per game |
-| `auth.jsx` | `Auth` | sign-in / sign-up |
-| `nav.jsx` | `Nav` | shared nav + mobile drawer |
-| `app.jsx` | `App` | hash-based router + `localStorage` session/score persistence |
-| `data.jsx` | `GAMES`, `CATS`, `seededScores()` | mock data — 8 games, deterministic fake scores |
+| Template          | Component                         | Intended route                                               |
+| ----------------- | --------------------------------- | ------------------------------------------------------------ |
+| `biblioteca.jsx`  | `Library`, `GameCard`             | game library / catalog with category filter                  |
+| `detalle.jsx`     | `GameDetail`                      | per-game detail page                                         |
+| `reproductor.jsx` | `GamePlayer`                      | play screen (HUD: score, lives, level)                       |
+| `salon.jsx`       | `HallOfFame`                      | leaderboard, tabbed per game                                 |
+| `auth.jsx`        | `Auth`                            | sign-in / sign-up                                            |
+| `nav.jsx`         | `Nav`                             | shared nav + mobile drawer                                   |
+| `app.jsx`         | `App`                             | hash-based router + `localStorage` session/score persistence |
+| `data.jsx`        | `GAMES`, `CATS`, `seededScores()` | mock data — 8 games, deterministic fake scores               |
 
 `styles.css` (950 lines) holds the visual language: dark neon palette
 (`--cyan #00f5ff`, `--magenta #ff006e`, `--yellow`, `--green`, gold/silver/bronze ranks),
