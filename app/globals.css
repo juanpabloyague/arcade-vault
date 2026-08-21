@@ -1250,6 +1250,34 @@
     animation: spinpix 0.6s steps(8) infinite;
     clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
   }
+
+  /* ===== 404 ===== */
+  .av-notfound {
+    max-width: 720px;
+    margin: 48px auto;
+    padding: 0 24px 80px;
+    text-align: center;
+  }
+  .notfound-log {
+    display: grid;
+    gap: 10px;
+    text-align: left;
+  }
+  .notfound-log .dim { color: var(--ink-faint); }
+  .notfound-log .blink { animation: blink 1.2s steps(1, end) infinite; }
+  .notfound-copy { margin: 28px 0 24px; }
+  .notfound-copy .notfound-title {
+    font-size: 12px;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+  .notfound-copy p { margin: 0; color: var(--ink-dim); font-size: 13px; }
+
+  @media (max-width: 480px) {
+    .av-notfound .crt { padding: 14px; }
+    .av-notfound .crt-content { font-size: 9px; }
+    .notfound-log { gap: 8px; }
+  }
 }
 
 /* =============================================================================
@@ -1264,6 +1292,7 @@
   .game-arena .player-ship,
   .game-arena .enemy,
   .toast-saved,
+  .notfound-log .blink,
   .spinner {
     animation: none !important;
   }
