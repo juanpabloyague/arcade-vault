@@ -104,6 +104,19 @@
     text-decoration: none;
   }
 
+  /* El preflight de Tailwind resetea los headings a `font-weight: inherit`.
+     El prototipo se apoya en el bold del user-agent: Press Start 2P solo trae
+     el peso 400, asi que el navegador lo sintetiza y engrosa el trazo. Sin
+     esto, el H1 del hero sale 2px mas fino que en la referencia. */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: bold;
+  }
+
   :focus-visible {
     outline: 2px solid var(--cyan);
     outline-offset: 2px;
@@ -359,6 +372,10 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    /* El prototipo usa <button>, que trae `text-align: center` del user-agent.
+       Aqui .btn tambien viste <a> y <span>, que alinean a `start`: sin esto la
+       segunda linea se desalinea cuando la etiqueta envuelve (nav en movil). */
+    text-align: center;
     gap: 10px;
     padding: 12px 20px;
     font-family: var(--pixel);
@@ -450,6 +467,10 @@
     background: transparent;
     border: 0;
     outline: 0;
+    /* El preflight pone `padding: 0` en los form controls; el prototipo conserva
+       el padding del user-agent, que corre el texto 2px a la derecha y da 2px
+       mas de alto a la caja. */
+    padding: 1px 2px;
     color: var(--ink);
     font-size: 13px;
     letter-spacing: 0.04em;
