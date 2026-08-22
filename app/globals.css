@@ -104,6 +104,19 @@
     text-decoration: none;
   }
 
+  /* El preflight de Tailwind resetea los headings a `font-weight: inherit`.
+     El prototipo se apoya en el bold del user-agent: Press Start 2P solo trae
+     el peso 400, asi que el navegador lo sintetiza y engrosa el trazo. Sin
+     esto, el H1 del hero sale 2px mas fino que en la referencia. */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: bold;
+  }
+
   :focus-visible {
     outline: 2px solid var(--cyan);
     outline-offset: 2px;
@@ -204,6 +217,17 @@
     min-height: 100%;
   }
   .av-main { flex: 1; }
+
+  /* Footer: mismos valores que el style inline de app.jsx en el prototipo. */
+  .av-foot {
+    padding: 20px 32px;
+    border-top: 1px solid var(--line);
+    color: var(--ink-faint);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-align: center;
+  }
 
   /* ===== pixel + neon text ===== */
   .pixel {
@@ -323,6 +347,14 @@
     border-bottom: 1px dashed var(--line-2);
   }
   .av-mobile-panel a.active { color: var(--cyan); }
+  /* Interior del cajón: mismos valores que los style inline de nav.jsx. */
+  .av-mobile-panel .drawer-title { font-size: 11px; margin-bottom: 16px; }
+  .av-mobile-panel .drawer-spacer { flex: 1; }
+  .av-mobile-panel .drawer-credits {
+    font-size: 9px;
+    color: var(--ink-faint);
+    letter-spacing: 0.16em;
+  }
   .av-mobile-backdrop {
     position: fixed;
     inset: 0;
@@ -340,6 +372,10 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    /* El prototipo usa <button>, que trae `text-align: center` del user-agent.
+       Aqui .btn tambien viste <a> y <span>, que alinean a `start`: sin esto la
+       segunda linea se desalinea cuando la etiqueta envuelve (nav en movil). */
+    text-align: center;
     gap: 10px;
     padding: 12px 20px;
     font-family: var(--pixel);
@@ -431,6 +467,10 @@
     background: transparent;
     border: 0;
     outline: 0;
+    /* El preflight pone `padding: 0` en los form controls; el prototipo conserva
+       el padding del user-agent, que corre el texto 2px a la derecha y da 2px
+       mas de alto a la caja. */
+    padding: 1px 2px;
     color: var(--ink);
     font-size: 13px;
     letter-spacing: 0.04em;
@@ -460,6 +500,19 @@
     max-width: 1320px;
     margin: 32px auto 80px;
     padding: 0 32px;
+  }
+
+  /* Estado vacío de la biblioteca: mismos valores que el style inline de biblioteca.jsx. */
+  .av-grid .av-empty {
+    grid-column: 1 / -1;
+    padding: 80px;
+    text-align: center;
+    color: var(--ink-faint);
+  }
+  .av-empty .empty-title {
+    font-size: 14px;
+    color: var(--magenta);
+    margin-bottom: 12px;
   }
 
   .card {
@@ -689,6 +742,8 @@
     overflow: hidden;
   }
   .detail-info { display: flex; flex-direction: column; gap: 16px; }
+  /* Separación bajo la portada: mismo valor que el style inline de detalle.jsx. */
+  .av-detail .detail-info { margin-top: 20px; }
   .detail-info h2 {
     margin: 0;
     font-family: var(--pixel);
@@ -728,6 +783,9 @@
     margin-top: 6px;
     text-shadow: 0 0 6px rgba(0, 245, 255, 0.5);
   }
+  /* Variantes de valor del stat-strip: mismos valores que los style inline de detalle.jsx. */
+  .stat-strip .v.magenta { color: var(--magenta); text-shadow: 0 0 6px rgba(255, 0, 110, 0.5); }
+  .stat-strip .v.yellow { color: var(--yellow); text-shadow: 0 0 6px rgba(245, 255, 0, 0.5); }
   .detail-actions { display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
 
   .leaderboard {
@@ -756,6 +814,8 @@
   }
   .lb-row .rk { font-family: var(--pixel); font-size: 11px; color: var(--ink-faint); }
   .lb-row .pl { color: var(--ink); }
+  /* Fecha bajo el nombre: mismos valores que el style inline de detalle.jsx. */
+  .lb-row .pl .lb-date { font-size: 10px; color: var(--ink-faint); letter-spacing: 0.1em; }
   .lb-row .sc { text-align: right; font-family: var(--pixel); font-size: 12px; color: var(--cyan); }
   .lb-row.top1 .rk, .lb-row.top1 .sc { color: var(--gold); text-shadow: 0 0 6px rgba(255, 207, 58, 0.6); }
   .lb-row.top2 .rk, .lb-row.top2 .sc { color: var(--silver); text-shadow: 0 0 6px rgba(199, 208, 224, 0.5); }
@@ -795,6 +855,18 @@
   .hud-stat.lives .v { color: var(--magenta); text-shadow: 0 0 6px rgba(255, 0, 110, 0.5); }
   .hud-stat.level .v { color: var(--yellow); text-shadow: 0 0 6px rgba(245, 255, 0, 0.5); }
   .hud-actions { display: flex; gap: 10px; }
+  /* Bloque de estadísticas del HUD y overlay de pausa:
+     mismos valores que los style inline de reproductor.jsx. */
+  .player-hud .hud-stats { display: flex; gap: 24px; flex-wrap: wrap; }
+  .hud-stat.player .v { color: var(--ink); }
+  .crt-content.paused { background: rgba(0, 0, 0, 0.6); z-index: 5; }
+  .crt-content .paused-title { font-size: 22px; }
+  .crt-content .paused-hint {
+    font-size: 11px;
+    color: var(--ink-dim);
+    margin-top: 10px;
+    letter-spacing: 0.16em;
+  }
 
   .crt {
     position: relative;
@@ -1218,6 +1290,34 @@
     animation: spinpix 0.6s steps(8) infinite;
     clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
   }
+
+  /* ===== 404 ===== */
+  .av-notfound {
+    max-width: 720px;
+    margin: 48px auto;
+    padding: 0 24px 80px;
+    text-align: center;
+  }
+  .notfound-log {
+    display: grid;
+    gap: 10px;
+    text-align: left;
+  }
+  .notfound-log .dim { color: var(--ink-faint); }
+  .notfound-log .blink { animation: blink 1.2s steps(1, end) infinite; }
+  .notfound-copy { margin: 28px 0 24px; }
+  .notfound-copy .notfound-title {
+    font-size: 12px;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+  .notfound-copy p { margin: 0; color: var(--ink-dim); font-size: 13px; }
+
+  @media (max-width: 480px) {
+    .av-notfound .crt { padding: 14px; }
+    .av-notfound .crt-content { font-size: 9px; }
+    .notfound-log { gap: 8px; }
+  }
 }
 
 /* =============================================================================
@@ -1232,6 +1332,7 @@
   .game-arena .player-ship,
   .game-arena .enemy,
   .toast-saved,
+  .notfound-log .blink,
   .spinner {
     animation: none !important;
   }
