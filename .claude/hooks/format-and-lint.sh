@@ -15,8 +15,12 @@ if (fp) process.stdout.write(fp);
 
 EXT="${FILE##*.}"
 
-# Strip trailing whitespace from all text files
-sed -i '' 's/[[:space:]]*$//' "$FILE" 2>/dev/null || true
+# Strip trailing whitespace from all text files (GNU sed vs BSD/macOS sed)
+if sed --version >/dev/null 2>&1; then
+  sed -i 's/[[:space:]]*$//' "$FILE" 2>/dev/null || true
+else
+  sed -i '' 's/[[:space:]]*$//' "$FILE" 2>/dev/null || true
+fi
 
 case "$EXT" in
   ts|tsx|js|jsx|mjs|cjs|json|css|md|mdx)
